@@ -1,7 +1,7 @@
 {
   "title": "mgxrl: Trust-weighted resilient consensus control for microgrids (code, trained policies and results)",
   "upload_type": "software",
-  "description": "Code, trained policies and result tables for the manuscript 'Trust-Weighted Resilient Consensus Control for Microgrids: A Physics-Structured Reinforcement Learning Framework with Verified Explanation Interfaces'. Contents: the reduced-order ten-DG islanded microgrid plant and six consensus-signal attack injectors; the Gymnasium environment with per-source trust-weight actions, safety projection and scale-normalised reward; PPO training and paired-seed evaluation; the three pre-training admissibility tests; integrated-gradients attribution, faithfulness battery and the template-versus-LLM explanation ablation; two-tier fidelity validation (stiff-solver reference, and differential comparison against the IEEE DataPort release); the mechanism sweeps behind the consensus-bias scaling law; forensic scripts for the public release; the final policies and VecNormalize statistics of every reported run; and scripts that regenerate every figure. The script reproduce_all.ps1 runs the full chain in dependency order. The IEEE DataPort release is not redistributed; the synthetic detector corpus is archived separately (doi:10.5281/zenodo.24082860). Code under Apache-2.0; result tables and figures under CC BY 4.0.",
+  "description": "Code, trained policies and result tables for the manuscript 'Trust-Weighted Resilient Consensus Control for Microgrids: A Physics-Structured Reinforcement Learning Framework with Verified Explanation Interfaces'. Contents: the reduced-order ten-DG islanded microgrid plant and six consensus-signal attack injectors; the Gymnasium environment with per-source trust-weight actions, safety projection and scale-normalised reward; PPO training and paired-seed evaluation; the three pre-training admissibility tests; integrated-gradients attribution, faithfulness battery and the template-versus-LLM explanation ablation; two-tier fidelity validation (stiff-solver reference, and differential comparison against the IEEE DataPort release); the mechanism sweeps behind the consensus-bias scaling law; forensic scripts for the public release; the final policies and VecNormalize statistics of every reported run; and scripts that regenerate every figure. The script reproduce_all.ps1 runs the full chain in dependency order. The IEEE DataPort release is not redistributed; the synthetic detector corpus is archived separately (doi:10.5281/zenodo.24082859). Code under Apache-2.0; result tables and figures under CC BY 4.0.",
   "license": "Apache-2.0",
   "keywords": ["microgrid", "distributed secondary control", "resilient consensus", "cyberattack", "reinforcement learning", "trust weights", "explainable AI", "cyber-physical security"],
   "creators": [
@@ -9,7 +9,7 @@
     {"name": "Chaitusaney, Surachai", "affiliation": "Chulalongkorn University", "orcid": "0000-0002-4194-3342"}
   ],
   "related_identifiers": [
-    {"identifier": "10.5281/zenodo.24082860", "relation": "references", "scheme": "doi", "resource_type": "dataset"},
+    {"identifier": "10.5281/zenodo.24082859", "relation": "references", "scheme": "doi", "resource_type": "dataset"},
     {"identifier": "10.21227/bmtr-fr76", "relation": "references", "scheme": "doi", "resource_type": "dataset"}
   ]
 }

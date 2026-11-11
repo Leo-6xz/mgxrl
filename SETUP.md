@@ -153,7 +153,7 @@ Get-ChildItem Dataset -Directory | Select-Object Name
 ```
 
 The synthetic corpus can be regenerated (`scripts\09_generate_detector_dataset.py`)
-or downloaded from doi:10.5281/zenodo.24082860 into `data\synthetic`.
+or downloaded from doi:10.5281/zenodo.24082859 into `data\synthetic`.
 
 ### 1.7 Load an archived agent
 

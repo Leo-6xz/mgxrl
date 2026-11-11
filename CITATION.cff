@@ -19,7 +19,7 @@ authors:
 references:
   - type: dataset
     title: "Synthetic Cyberattack Corpus for Distributed Secondary Control of a Ten-Generator Islanded Microgrid (280 Independent Runs)"
-    doi: "10.5281/zenodo.24082860"
+    doi: "10.5281/zenodo.24082859"
     authors:
       - family-names: Ogar
         given-names: Emmanuel Ede

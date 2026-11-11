@@ -10,7 +10,7 @@ slprj/
 # --- third-party data: NOT redistributable (IEEE DataPort licence) ---
 Dataset/
 
-# --- synthetic corpus: archived separately, doi:10.5281/zenodo.24082860 ---
+# --- synthetic corpus: archived separately, doi:10.5281/zenodo.24082859 ---
 data/
 
 # --- working notes and tooling not part of the archive ---
