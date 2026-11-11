@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper and this software release."
+title: "mgxrl: Trust-weighted resilient consensus control for microgrids (code, trained policies and results)"
+version: 1.0.0
+date-released: 2026-11-11
+license: Apache-2.0
+repository-code: "https://github.com/Leo-6xz/mgxrl"
+keywords: [microgrid, distributed secondary control, resilient consensus, cyberattack, reinforcement learning, explainable AI]
+authors:
+  - family-names: Ogar
+    given-names: Emmanuel Ede
+    orcid: "https://orcid.org/0000-0002-1550-3546"
+    affiliation: "Chulalongkorn University"
+  - family-names: Chaitusaney
+    given-names: Surachai
+    orcid: "https://orcid.org/0000-0002-4194-3342"
+    affiliation: "Chulalongkorn University"
+references:
+  - type: dataset
+    title: "Synthetic Cyberattack Corpus for Distributed Secondary Control of a Ten-Generator Islanded Microgrid (280 Independent Runs)"
+    doi: "10.5281/zenodo.24082860"
+    authors:
+      - family-names: Ogar
+        given-names: Emmanuel Ede
+      - family-names: Chaitusaney
+        given-names: Surachai

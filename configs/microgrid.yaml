@@ -1,0 +1,72 @@
+# Reduced-order plant configuration.
+# noise_* values should be replaced by the output of
+# matlab/fit_noise_from_dataset.m so the model's noise floor is calibrated to
+# the published dataset rather than assumed.
+plant:
+  n_dg: 10
+  f_nom: 50.0
+  v_nom: 1.0
+  m_droop: 1.5708        # rad/s per pu P  (0.5% droop)
+  n_droop: 0.05          # pu V per pu Q   (5% droop)
+  tau_f: 0.016
+  k_p: 5.0
+  c_f: 10.0
+  k_q: 5.0
+  c_v: 10.0
+  r_line: 0.05
+  x_line: 0.15
+  load_p: 0.65           # > p_set on purpose: creates the droop steady-state
+  load_q: 0.28           # error that the secondary controller must remove
+  p_set: 0.50
+  q_set: 0.20
+  dt: 0.001
+  control_dt: 0.010
+  noise_v: 2.0e-4
+  noise_p: 1.0e-3
+  noise_q: 1.0e-3
+  noise_f: 2.0e-4
+
+env:
+  episode_seconds: 12.0   # SlowRamp needs ~10 s post-onset to matter
+  settle_seconds: 1.5
+  residual_xi_max: 1.5
+  residual_zeta_max: 0.04
+  residual_rate_max: 0.25
+  history_len: 4
+  n_load_steps: 3
+  p_normal: 0.1428         # overridden per curriculum stage
+  attack_subset: []        # empty = all classes
+  load_step_mag: 0.15
+  safety_projection: true
+
+reward:
+  # NOT READ BY TRAINING. RewardWeights in src/mgxrl/envs/resilient_env.py is authoritative;
+  # this section is documentation only and must be kept in step with it.
+  # Reference scales are the 90th percentile of each metric measured over 12
+  # undefended Normal episodes. They are properties of the PLANT, not free
+  # parameters -- regenerate with scripts/00_calibrate_reward.py whenever the
+  # plant, load model, or disturbance schedule changes.
+  ref_f_rmse: 5.0e-4
+  ref_v_rmse: 1.8e-3
+  ref_p_share: 6.0e-3
+  ref_q_share: 1.8e-1        # ~30x ref_p_share: Q sharing is inherently poor
+  ref_xi_spread: 2.166e-3    # applied to the SUSTAINED (EMA) value
+  ref_zeta_spread: 1.057e-3
+  consensus_tau: 2.0         # s; separates DoS from benign load-step transients
+
+  w_f: 3.0
+  w_v: 2.0
+  w_p_share: 1.5
+  w_q_share: 1.0
+  w_xi_spread: 2.5           # the DoS / stealth channel
+  w_zeta_spread: 1.5
+  w_v_violation: 50.0
+  w_action: 1.0             # was 0.10 -- saturation was effectively free
+  w_smooth: 0.40
+  w_saturation: 6.0        # explicit penalty for pinning the actuator
+  saturation_threshold: 0.9
+  w_flat: 0.05
+
+  sat_cap: 1.0               # scale on the log-compressed terms
+  collapse_penalty: 200.0
+  alive_bonus: 9.0

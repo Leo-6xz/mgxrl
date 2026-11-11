@@ -1,0 +1,124 @@
+{
+  "results": {
+    "random": {
+      "accuracy": 0.4552380952380952,
+      "macro_f1": 0.4308822210571397,
+      "per_class_f1": {
+        "Normal": 0.35294117647058826,
+        "Additive": 0.6141732283464567,
+        "Ramp": 0.35978835978835977,
+        "SlowRamp": 0.9382716049382716,
+        "Sinusoid": 0.4,
+        "Stealth": 0.3510011778563015,
+        "DoS": 0.0
+      },
+      "frac_rows_flagged": 0.3333333333333333,
+      "accuracy_on_flagged": 0.94,
+      "accuracy_on_unflagged": 0.21285714285714286
+    },
+    "block": {
+      "accuracy": 0.42,
+      "macro_f1": 0.3852295982107546,
+      "per_class_f1": {
+        "Normal": 0.16346153846153846,
+        "Additive": 0.5657370517928287,
+        "Ramp": 0.3033175355450237,
+        "SlowRamp": 0.9308510638297872,
+        "Sinusoid": 0.46938775510204084,
+        "Stealth": 0.2638522427440633,
+        "DoS": 0.0
+      },
+      "frac_rows_flagged": 0.38476190476190475,
+      "accuracy_on_flagged": 0.844059405940594,
+      "accuracy_on_unflagged": 0.15479876160990713
+    }
+  },
+  "channels": [
+    "v1",
+    "v3",
+    "i1"
+  ],
+  "signature": {
+    "v1__diverged": {
+      "Additive": 0.512,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.355,
+      "SlowRamp": 0.0,
+      "Stealth": 0.0
+    },
+    "v1__missing": {
+      "Additive": 0.0,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.0,
+      "SlowRamp": 0.0,
+      "Stealth": 0.0
+    },
+    "v1__log10mag": {
+      "Additive": 74.481209,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 44.535488,
+      "SlowRamp": 0.0,
+      "Stealth": 0.0
+    },
+    "v3__diverged": {
+      "Additive": 0.0,
+      "DoS": 0.0,
+      "Normal": 0.267,
+      "Ramp": 0.204,
+      "Sinusoid": 0.0,
+      "SlowRamp": 0.556,
+      "Stealth": 0.0
+    },
+    "v3__missing": {
+      "Additive": 0.0,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.0,
+      "SlowRamp": 0.338,
+      "Stealth": 0.0
+    },
+    "v3__log10mag": {
+      "Additive": 0.0,
+      "DoS": 0.0,
+      "Normal": 39.615031,
+      "Ramp": 23.933552,
+      "Sinusoid": 0.0,
+      "SlowRamp": 74.853825,
+      "Stealth": 0.0
+    },
+    "i1__diverged": {
+      "Additive": 0.075,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.0,
+      "SlowRamp": 0.056,
+      "Stealth": 0.0
+    },
+    "i1__missing": {
+      "Additive": 0.0,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.0,
+      "SlowRamp": 0.0,
+      "Stealth": 0.0
+    },
+    "i1__log10mag": {
+      "Additive": 7.582,
+      "DoS": 0.0,
+      "Normal": 0.0,
+      "Ramp": 0.0,
+      "Sinusoid": 0.0,
+      "SlowRamp": 8.180495,
+      "Stealth": 0.0
+    }
+  }
+}

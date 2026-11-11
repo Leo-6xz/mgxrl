@@ -1,0 +1,113 @@
+{
+  "references_measured": {
+    "f_rmse": 0.0004285817299860872,
+    "v_rmse": 0.0016327334433672834,
+    "p_sharing_error": 0.005875564221603058,
+    "q_sharing_error": 0.1771015331309817,
+    "xi_spread_sustained": 0.0020073894067536738,
+    "zeta_spread_sustained": 0.0010865067844181733
+  },
+  "references_in_use": {
+    "ref_f_rmse": 0.0005,
+    "ref_v_rmse": 0.0018,
+    "ref_p_share": 0.006,
+    "ref_q_share": 0.18,
+    "ref_xi_spread": 0.002166,
+    "ref_zeta_spread": 0.001057
+  },
+  "separation_in_use": {
+    "Normal": {
+      "return_mean": 6283.915055656328,
+      "return_std": 1538.157727689046,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 0.9374812034359221,
+        "v_rmse": 0.8746618216098222,
+        "p_sharing_error": 0.30677519343671816,
+        "q_sharing_error": 0.47986798311993145,
+        "xi_spread_sustained": 0.48506888375417334,
+        "zeta_spread_sustained": 0.5242159893854439
+      }
+    },
+    "Additive": {
+      "return_mean": -51345.66529835786,
+      "return_std": 844.4467068468024,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 20.99177417306692,
+        "v_rmse": 4.097457145853002,
+        "p_sharing_error": 9.529245932078577,
+        "q_sharing_error": 0.5754479654779193,
+        "xi_spread_sustained": 20.13352192691066,
+        "zeta_spread_sustained": 1.8913460680821426
+      }
+    },
+    "Ramp": {
+      "return_mean": -78405.78627409223,
+      "return_std": 476.7901842762398,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 33.790546492910224,
+        "v_rmse": 6.6704535742872535,
+        "p_sharing_error": 14.229710304112839,
+        "q_sharing_error": 1.6331121129302208,
+        "xi_spread_sustained": 29.85510279134462,
+        "zeta_spread_sustained": 4.081739500795709
+      }
+    },
+    "SlowRamp": {
+      "return_mean": -3585.679891763004,
+      "return_std": 1350.1764181380192,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 1.2018597790429582,
+        "v_rmse": 6.3580620076920065,
+        "p_sharing_error": 0.4307572090934997,
+        "q_sharing_error": 0.6433477880189675,
+        "xi_spread_sustained": 0.9558359105032187,
+        "zeta_spread_sustained": 4.020012125066227
+      }
+    },
+    "Sinusoid": {
+      "return_mean": -30187.272132670256,
+      "return_std": 989.0684276530261,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 16.1359443219712,
+        "v_rmse": 1.6535002699809724,
+        "p_sharing_error": 4.298225319738218,
+        "q_sharing_error": 0.4876108886782172,
+        "xi_spread_sustained": 13.505737070235483,
+        "zeta_spread_sustained": 1.2962184882848586
+      }
+    },
+    "Stealth": {
+      "return_mean": -17982.65796185038,
+      "return_std": 1428.470362660993,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 12.027327644946771,
+        "v_rmse": 1.0148342969538588,
+        "p_sharing_error": 3.0865183696722416,
+        "q_sharing_error": 0.4814589510238171,
+        "xi_spread_sustained": 9.569810033034274,
+        "zeta_spread_sustained": 0.5776831917223277
+      }
+    },
+    "DoS": {
+      "return_mean": 4666.241354610237,
+      "return_std": 2677.734618201044,
+      "n_seeds": 10,
+      "terms": {
+        "f_rmse": 1.464858150962257,
+        "v_rmse": 0.8734832924663394,
+        "p_sharing_error": 0.46284842377075225,
+        "q_sharing_error": 0.4790220464739397,
+        "xi_spread_sustained": 1.260107196359688,
+        "zeta_spread_sustained": 0.522778893113638
+      }
+    }
+  },
+  "separation_measured_refs": null,
+  "stale": []
+}

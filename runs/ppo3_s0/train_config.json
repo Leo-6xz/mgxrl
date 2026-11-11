@@ -1,0 +1,8 @@
+{
+  "w_action": 1.0,
+  "seed": 0,
+  "total_timesteps": 5000000,
+  "include_detector": false,
+  "obs_dim": 320,
+  "history_len": 4
+}

@@ -1,0 +1,61 @@
+# --- environment / caches ---
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+slprj/
+*.slxc
+*.asv
+
+# --- third-party data: NOT redistributable (IEEE DataPort licence) ---
+Dataset/
+
+# --- synthetic corpus: archived separately, doi:10.5281/zenodo.24082860 ---
+data/
+
+# --- working notes and tooling not part of the archive ---
+HANDOFF.md
+fix_layout.py
+_replaced/
+
+# --- trained agents: keep ONLY the final policy + normalisation of reported runs ---
+runs/**
+!runs/
+!runs/ppo3_s0/
+!runs/ppo3_s1/
+!runs/ppo3_s2/
+!runs/wact3/
+!runs/wact10/
+!runs/pnorm50_5M/
+!runs/*/agent_final.zip
+!runs/*/vecnormalize.pkl
+!runs/*/train_config.json
+!runs/*/actor_obsnorm.json
+
+# --- results: superseded or exploratory evaluations ---
+results/eval_s0/
+results/eval_s1/
+results/eval_s2/
+results/eval2_*/
+results/smoke*/
+results/pnorm50/
+results/reproduce_*.log
+
+# --- local leftovers from the archiving procedure ---
+.git_old/
+figs_old/
+RUNBOOK.md
+ARCHIVING_GUIDE.md
+
+# --- superseded or exploratory results, and rendered figures ---
+results/clean/
+results/clean_stable/
+results/release/
+results/synth/
+results/synth_raw/
+results/synthetic/
+results/xai_*/
+results/fig14/*.svg
+results/fig14/*.png
+figs/source/out/
+figs/source/orig/

@@ -1,0 +1,8 @@
+scenario,onset_s,attacked_fraction,duplicate_of_normal_pre_attack
+Normal,,0.0,False
+Additive,0.5,0.3006993006993007,False
+Ramp,0.5,0.3006993006993007,False
+SlowRamp,0.5,0.3006993006993007,False
+Sinusoid,0.5,0.3006993006993007,False
+Stealth,0.5,0.3006993006993007,False
+DoS,0.5,0.3006993006993007,False

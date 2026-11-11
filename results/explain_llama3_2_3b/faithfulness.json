@@ -1,0 +1,12 @@
+{
+  "counterfactual_win_rate": 0.69,
+  "ci95_wilson": [
+    0.5937376052204429,
+    0.7722043679386762
+  ],
+  "null_win_rate": 0.42,
+  "effect_ratio_median": 1.095363389786404,
+  "deletion_area_vs_random": 0.8191080690264702,
+  "deletion_area_vs_magnitude": 0.10423709684610366,
+  "n_states": 100
+}

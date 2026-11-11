@@ -1,0 +1,12 @@
+attack,window,len_s,developed,rmsP_release_W,rmsP_plant_pu,dP1_release_W,dP1_plant_pu,dfmean_release_Hz,dfmean_plant_Hz,dir_P,dir_f,corr_P1,corr_f1,verdict
+Additive,primary,0.05,0.286,9.8056,0.00958,-17.6956,-0.014229,-0.0001519,0.0035844,True,False,0.9368,-0.9992,"power agrees, frequency direction differs"
+Additive,full,0.3,1.0,34.2884,0.013474,-36.7298,0.019819,-0.0008711,0.0134603,False,False,-0.308,-0.9862,direction differs on both [plant secondary active -- not a primary test]
+Ramp,primary,0.05,0.1432,0.2196,0.000268,-0.199,-0.000484,-6e-07,0.0001438,True,False,0.3635,-0.5047,"power agrees, frequency direction differs"
+Ramp,full,0.3,1.0,1.5341,0.002872,-1.5391,-0.00325,-2.36e-05,0.0037162,True,False,0.367,-0.9871,"power agrees, frequency direction differs [plant secondary active -- not a primary test]"
+SlowRamp,primary,0.05,0.0,0.0,1.5e-05,-0.0,-1.8e-05,-0.0,-1.1e-06,,,,,NOT DEVELOPED -- only 0.0% of the full-window response; no test either way
+SlowRamp,full,0.3,1.0,0.9213,0.000336,-0.048,0.000566,-1e-07,-3.58e-05,False,True,-0.011,0.0243,"frequency agrees, power direction differs [plant secondary active -- not a primary test]"
+Sinusoid,primary,0.05,0.0247,0.0238,0.003108,-0.0141,-0.005399,-1e-07,0.0013651,,,,,NOT DEVELOPED -- only 2.5% of the full-window response; no test either way
+Sinusoid,full,0.3,1.0,0.9621,0.019131,0.0902,0.031212,8e-07,0.0098726,,,0.0843,0.1876,shape only (zero-mean injection; direction undefined) [plant secondary active -- not a primary test]
+Stealth,primary,0.05,0.0,0.0,0.000145,0.0,-0.000206,0.0,0.0008329,,,,,NOT DEVELOPED -- only 0.0% of the full-window response; no test either way
+Stealth,full,0.3,1.0,0.4151,0.004741,0.064,0.008203,-0.0,0.0055482,,,0.0891,-0.0326,shape only (zero-mean injection; direction undefined) [plant secondary active -- not a primary test]
+DoS,-,,,,,,,,,,,,,NOT COMPARABLE -- file does not share a startup with Normal

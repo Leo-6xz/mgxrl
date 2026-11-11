@@ -1,0 +1,14 @@
+{
+  "vecnorm": "runs/pnorm50_5M\\vecnormalize.pkl",
+  "mean_connectivity_loss": 0.19575321674671475,
+  "p99_connectivity_loss": 0.3253416145145893,
+  "frac_steps_loss_above_0.05": 0.9999666666666667,
+  "frac_steps_loss_above_0.20": 0.5243666666666666,
+  "worst_channel_loss_p99": 1.0,
+  "mean_channels_isolated": 3.2692666666666668,
+  "frac_steps_any_isolated": 0.9980666666666667,
+  "mean_loss_xi": 0.2649356668179258,
+  "mean_loss_zeta": 0.12657076667550368,
+  "frac_components_in_flat_region": 0.5432766666666666,
+  "mean_abs_action_NOT_A_TRIGGER_METRIC": 0.9863169409563144
+}

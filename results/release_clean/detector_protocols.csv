@@ -1,0 +1,3 @@
+protocol,n_repeats,binary_macro_f1,binary_std,multi_macro_f1,multi_std,stealth_f1,slowramp_f1,nn_dist_per_dim
+random,10,0.9944,0.0022,0.99,0.0054,0.98,0.9793,0.05942
+block,10,0.9293,0.0327,0.6582,0.0967,0.3921,0.4583,0.10676
