@@ -131,7 +131,7 @@ If PowerShell refuses to run the script:
   release detector benchmark and Tier B fidelity.
 - **Synthetic corpus** — regenerate with
   `scripts\09_generate_detector_dataset.py`, or download the archived copy,
-  doi:10.5281/zenodo.24082860, into `data\synthetic`.
+  doi:10.5281/zenodo.24082859, into `data\synthetic`.
 
 ---
 
