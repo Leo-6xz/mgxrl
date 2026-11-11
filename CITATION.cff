@@ -3,6 +3,7 @@ message: "If you use this software, please cite the paper and this software rele
 title: "mgxrl: Trust-weighted resilient consensus control for microgrids (code, trained policies and results)"
 version: 1.0.0
 date-released: 2026-11-11
+doi: "10.5281/zenodo.24134204"
 license: Apache-2.0
 repository-code: "https://github.com/Leo-6xz/mgxrl"
 keywords: [microgrid, distributed secondary control, resilient consensus, cyberattack, reinforcement learning, explainable AI]
