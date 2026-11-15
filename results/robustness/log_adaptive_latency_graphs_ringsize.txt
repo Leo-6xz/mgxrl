@@ -1,0 +1,96 @@
+=== adaptive ===
+                    return  p_sharing_error  f_rmse  ever_isolated
+alpha arm                                                         
+0.5   nominal    1614.4719           0.0049  0.0007           0.00
+      threshold  1614.5253           0.0049  0.0007           0.00
+0.9   nominal   -2695.6389           0.0072  0.0010           0.00
+      threshold -2693.4874           0.0072  0.0010           0.05
+1.2   nominal   -5429.3193           0.0091  0.0012           0.00
+      threshold  5516.3156           0.0033  0.0005           1.00
+              return  p_sharing_error  f_rmse
+attack                                       
+Additive -39449.2379           0.1267  0.0180
+Normal     6158.9876           0.0030  0.0005
+=== latency ===
+threshold
+          isolated  latency_ms_median  latency_ms_max  false_iso_steps
+attack                                                                
+Additive       1.0               33.7            41.0             7559
+DoS            0.0                NaN             NaN                0
+Ramp           1.0               65.4           105.6                9
+Sinusoid       1.0               40.9            45.6               65
+SlowRamp       0.0                NaN             NaN                0
+Stealth        1.0               44.1           357.3                0
+oracle
+          isolated  latency_ms_median  latency_ms_max  false_iso_steps
+attack                                                                
+Additive       1.0               33.2            36.0                0
+DoS            1.0               33.2            36.0                0
+Ramp           1.0               33.2            36.0                0
+Sinusoid       1.0               33.2            36.0                0
+SlowRamp       1.0               33.2            36.0                0
+Stealth        1.0               33.6            39.6                0
+=== graphs ===
+circ2 {"degree": 4, "r_robust": 2, "tau": [0.0003903426986653358, 0.01043458585627377], "threshold_normal_loss": 0.0, "wmsr_edges_kept_xi": 0.55010625, "wmsr_edges_kept_zeta": 0.5730177083333333, "wmsr_connectivity_loss": 0.4384380208333334}
+circ3 {"degree": 6, "r_robust": 3, "tau": [0.00030814508500043303, 0.007339035160839558], "threshold_normal_loss": 0.0, "wmsr_edges_kept_xi": 0.7002118055555556, "wmsr_edges_kept_zeta": 0.7039347222222223, "wmsr_connectivity_loss": 0.2979267361111111}
+  attack       arm  mean_return  delta_vs_nominal     t  n_better  collapsed graph
+Additive      wmsr      6737.15          42980.66 16.30        20          0 circ2
+     DoS      wmsr      6803.01            873.71  3.82        19          0 circ2
+  Normal      wmsr      6860.98           -400.51 -7.51         0          0 circ2
+    Ramp      wmsr      6806.28          42703.14 16.89        20          0 circ2
+Sinusoid      wmsr      6795.68          28722.90 15.28        20          0 circ2
+SlowRamp      wmsr      6793.52           6833.78  9.22        20          0 circ2
+ Stealth      wmsr     -2309.65           3517.94  7.89        20          0 circ2
+Additive threshold      6696.25          42939.75 16.34        20          0 circ2
+     DoS threshold      5929.30              0.00   NaN         0          0 circ2
+  Normal threshold      7261.49              0.00   NaN         0          0 circ2
+    Ramp threshold      7182.98          43079.84 17.02        20          0 circ2
+Sinusoid threshold      7005.70          28932.91 15.42        20          0 circ2
+SlowRamp threshold      7202.34           7242.59  9.81        20          0 circ2
+ Stealth threshold      5333.17          11160.76  9.98        20          0 circ2
+Additive      wmsr      7209.80          39986.22 16.39        20          0 circ3
+     DoS      wmsr      7232.74           1530.02  5.74        20          0 circ3
+  Normal      wmsr      7263.04            -41.97 -6.95         1          0 circ3
+    Ramp      wmsr      7245.00          29735.02 13.13        20          0 circ3
+Sinusoid      wmsr      7242.28          26772.04 15.32        20          0 circ3
+SlowRamp      wmsr      7227.40           7742.80 10.45        20          0 circ3
+ Stealth      wmsr     -2616.72           2887.07  9.26        20          0 circ3
+Additive threshold      6013.26          38789.68 14.66        20          0 circ3
+     DoS threshold      5790.24             87.53  1.00         1          0 circ3
+  Normal threshold      7305.01              0.00   NaN         0          0 circ3
+    Ramp threshold      7237.40          29727.41 13.12        20          0 circ3
+Sinusoid threshold      7027.73          26557.48 15.25        20          0 circ3
+SlowRamp threshold      7257.71           7773.11 10.55        20          0 circ3
+ Stealth threshold      5673.57          11177.35 11.69        20          0 circ3
+=== ringsize ===
+6 {"tau": [0.0004896019381703809, 0.012671312782913446], "threshold_normal_loss": 0.0}
+14 {"tau": [0.0005320678028510883, 0.013501879759132862], "threshold_normal_loss": 0.0}
+  attack       arm  mean_return  delta_vs_nominal     t  n_better  collapsed  n_dg
+Additive threshold      4012.40          41369.94 11.56        19          0     6
+     DoS threshold      5373.25            275.39  1.45         2          0     6
+  Normal threshold      7326.30              0.00   NaN         0          0     6
+    Ramp threshold      7117.41          49758.93 17.20        20          0     6
+Sinusoid threshold      6787.78          29939.07 15.55        20          0     6
+SlowRamp threshold      7121.05           7000.20  9.34        20          0     6
+ Stealth threshold      1936.97           7823.15  6.77        20          0     6
+Additive    oracle      6553.25          43910.79 16.40        20          0     6
+     DoS    oracle      6954.69           1856.84  4.80        20          0     6
+  Normal    oracle      7326.30              0.00   NaN         0          0     6
+    Ramp    oracle      6954.20          49595.72 17.17        20          0     6
+Sinusoid    oracle      6869.18          30020.48 15.56        20          0     6
+SlowRamp    oracle      6954.74           6833.89  9.32        20          0     6
+ Stealth    oracle       180.11           6066.29  3.70        15          0     6
+Additive threshold      -574.25          39722.36 16.50        20          0    14
+     DoS threshold      2034.26              0.00   NaN         0          0    14
+  Normal threshold      2500.02              0.00   NaN         0          0    14
+    Ramp threshold      1454.01          51283.63 18.57        20          0    14
+Sinusoid threshold      1246.89          22848.31 14.24        20          0    14
+SlowRamp threshold      2343.31           6904.39  8.23        20          0    14
+ Stealth threshold        46.58           8022.86  8.49        20          0    14
+Additive    oracle       981.66          41278.26 16.90        20          0    14
+     DoS    oracle      1287.12           -747.13 -2.60         3          0    14
+  Normal    oracle      2500.02              0.00   NaN         0          0    14
+    Ramp    oracle      1288.40          51118.02 18.60        20          0    14
+Sinusoid    oracle      1248.82          22850.24 14.26        20          0    14
+SlowRamp    oracle      1287.14           5848.22  7.74        20          0    14
+ Stealth    oracle       290.12           8266.41  8.32        20          0    14

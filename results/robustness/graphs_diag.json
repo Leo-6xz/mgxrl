@@ -1,0 +1,26 @@
+{
+  "circ2": {
+    "degree": 4,
+    "r_robust": 2,
+    "tau": [
+      0.0003903426986653358,
+      0.01043458585627377
+    ],
+    "threshold_normal_loss": 0.0,
+    "wmsr_edges_kept_xi": 0.55010625,
+    "wmsr_edges_kept_zeta": 0.5730177083333333,
+    "wmsr_connectivity_loss": 0.4384380208333334
+  },
+  "circ3": {
+    "degree": 6,
+    "r_robust": 3,
+    "tau": [
+      0.00030814508500043303,
+      0.007339035160839558
+    ],
+    "threshold_normal_loss": 0.0,
+    "wmsr_edges_kept_xi": 0.700066666666667,
+    "wmsr_edges_kept_zeta": 0.7039347222222223,
+    "wmsr_connectivity_loss": 0.2979993055555554
+  }
+}

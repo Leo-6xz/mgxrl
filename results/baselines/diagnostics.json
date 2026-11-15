@@ -1,0 +1,13 @@
+{
+  "threshold_tau_xi": 0.0004934064927510917,
+  "threshold_tau_zeta": 0.016874926630407572,
+  "calib_max_innov_xi": 0.00032893766183406115,
+  "calib_max_innov_zeta": 0.011249951086938381,
+  "margin": 1.5,
+  "nominal_repro_max_abs_return_diff": 3.637978807091713e-12,
+  "wmsr_edges_kept_xi": 0.11843749999999999,
+  "wmsr_edges_kept_zeta": 0.3379958333333333,
+  "wmsr_connectivity_loss": 0.7717833333333334,
+  "threshold_mean_connectivity_loss": 0.0,
+  "threshold_frac_steps_any_isolated": 0.0
+}

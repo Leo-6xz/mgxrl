@@ -1,0 +1,77 @@
+=== comms ===
+d10ms_l0 {"tau_matched": [0.0004251137579558417, 0.016871443949639797], "tau_ideal": [0.0004934064927510917, 0.016874926630407572], "normal_loss_matched": 0.0, "normal_any_isolated_matched": 0.0, "normal_loss_ideal": 0.0, "normal_any_isolated_ideal": 0.0}
+d50ms_l0 {"tau_matched": [0.00037055197753943503, 0.016854553017765284], "tau_ideal": [0.0004934064927510917, 0.016874926630407572], "normal_loss_matched": 0.0, "normal_any_isolated_matched": 0.0, "normal_loss_ideal": 0.0, "normal_any_isolated_ideal": 0.0}
+d0ms_l0.2 {"tau_matched": [0.0004939664213452488, 0.016874886117875576], "tau_ideal": [0.0004934064927510917, 0.016874926630407572], "normal_loss_matched": 0.0, "normal_any_isolated_matched": 0.0, "normal_loss_ideal": 0.0, "normal_any_isolated_ideal": 0.0}
+d0ms_l0.5 {"tau_matched": [0.0004886561800958589, 0.016874775756150484], "tau_ideal": [0.0004934064927510917, 0.016874926630407572], "normal_loss_matched": 0.0, "normal_any_isolated_matched": 0.0, "normal_loss_ideal": 0.0, "normal_any_isolated_ideal": 0.0}
+d20ms_l0.2 {"tau_matched": [0.00036685189115814865, 0.016867659520357847], "tau_ideal": [0.0004934064927510917, 0.016874926630407572], "normal_loss_matched": 0.0, "normal_any_isolated_matched": 0.0, "normal_loss_ideal": 0.0, "normal_any_isolated_ideal": 0.0}
+  attack               arm  mean_return  delta_vs_nominal     t  n_better  collapsed    channel
+Additive threshold_matched       724.88          40020.41 16.55        20          0   d10ms_l0
+     DoS threshold_matched      5061.14              0.00   NaN         0          0   d10ms_l0
+  Normal threshold_matched      6118.38              0.00   NaN         0          0   d10ms_l0
+    Ramp threshold_matched      5530.22          59377.26 16.25        20          0   d10ms_l0
+Sinusoid threshold_matched      5207.66          25791.51 14.83        20          0   d10ms_l0
+SlowRamp threshold_matched      5943.97           6899.46  8.81        20          0   d10ms_l0
+ Stealth threshold_matched      3541.21          10015.30  8.39        20          0   d10ms_l0
+Additive   threshold_ideal      1294.40          40589.93 17.13        20          0   d10ms_l0
+     DoS   threshold_ideal      5061.14              0.00   NaN         0          0   d10ms_l0
+  Normal   threshold_ideal      6118.38              0.00   NaN         0          0   d10ms_l0
+    Ramp   threshold_ideal      5516.60          59363.64 16.25        20          0   d10ms_l0
+Sinusoid   threshold_ideal      5228.47          25812.32 14.94        20          0   d10ms_l0
+SlowRamp   threshold_ideal      5943.97           6899.46  8.81        20          0   d10ms_l0
+ Stealth   threshold_ideal      2795.12           9269.20  7.68        20          0   d10ms_l0
+Additive threshold_matched       408.10          39240.50 15.94        20          0   d50ms_l0
+     DoS threshold_matched      4777.26              0.00   NaN         0          0   d50ms_l0
+  Normal threshold_matched      5794.76              0.00   NaN         0          0   d50ms_l0
+    Ramp threshold_matched      5276.60          58462.43 15.77        20          0   d50ms_l0
+Sinusoid threshold_matched      4935.97          23996.78 14.58        20          0   d50ms_l0
+SlowRamp threshold_matched      5626.83           6849.53  8.69        20          0   d50ms_l0
+ Stealth threshold_matched      3504.41           9121.00  8.22        20          0   d50ms_l0
+Additive   threshold_ideal      1362.21          40194.62 17.23        20          0   d50ms_l0
+     DoS   threshold_ideal      4777.26              0.00   NaN         0          0   d50ms_l0
+  Normal   threshold_ideal      5794.76              0.00   NaN         0          0   d50ms_l0
+    Ramp   threshold_ideal      5265.80          58451.63 15.77        20          0   d50ms_l0
+Sinusoid   threshold_ideal      4972.18          24032.99 14.73        20          0   d50ms_l0
+SlowRamp   threshold_ideal      5626.82           6849.53  8.69        20          0   d50ms_l0
+ Stealth   threshold_ideal      2099.65           7716.24  6.58        20          0   d50ms_l0
+Additive threshold_matched       803.48          40248.43 16.16        20          0  d0ms_l0.2
+     DoS threshold_matched      5097.99              0.00   NaN         0          0  d0ms_l0.2
+  Normal threshold_matched      6158.03              0.00   NaN         0          0  d0ms_l0.2
+    Ramp threshold_matched      5540.12          59607.06 16.36        20          0  d0ms_l0.2
+Sinusoid threshold_matched      5239.26          26740.29 15.05        20          0  d0ms_l0.2
+SlowRamp threshold_matched      5982.05           6919.13  8.84        20          0  d0ms_l0.2
+ Stealth threshold_matched      2890.06           9664.60  7.86        20          0  d0ms_l0.2
+Additive   threshold_ideal       802.89          40247.84 16.16        20          0  d0ms_l0.2
+     DoS   threshold_ideal      5097.99              0.00   NaN         0          0  d0ms_l0.2
+  Normal   threshold_ideal      6158.03              0.00   NaN         0          0  d0ms_l0.2
+    Ramp   threshold_ideal      5540.12          59607.06 16.36        20          0  d0ms_l0.2
+Sinusoid   threshold_ideal      5239.09          26740.12 15.05        20          0  d0ms_l0.2
+SlowRamp   threshold_ideal      5982.05           6919.13  8.84        20          0  d0ms_l0.2
+ Stealth   threshold_ideal      2890.54           9665.08  7.86        20          0  d0ms_l0.2
+Additive threshold_matched       138.45          39571.22 17.04        20          0  d0ms_l0.5
+     DoS threshold_matched      5095.57              0.00   NaN         0          0  d0ms_l0.5
+  Normal threshold_matched      6155.47              0.00   NaN         0          0  d0ms_l0.5
+    Ramp threshold_matched      5538.59          59584.94 16.36        20          0  d0ms_l0.5
+Sinusoid threshold_matched      4883.30          26303.60 15.40        20          0  d0ms_l0.5
+SlowRamp threshold_matched      5979.51           6917.32  8.84        20          0  d0ms_l0.5
+ Stealth threshold_matched      2928.59           9677.94  7.91        20          0  d0ms_l0.5
+Additive   threshold_ideal       158.08          39590.86 17.04        20          0  d0ms_l0.5
+     DoS   threshold_ideal      5095.57              0.00   NaN         0          0  d0ms_l0.5
+  Normal   threshold_ideal      6155.47              0.00   NaN         0          0  d0ms_l0.5
+    Ramp   threshold_ideal      5533.61          59579.96 16.36        20          0  d0ms_l0.5
+Sinusoid   threshold_ideal      4889.36          26309.66 15.42        20          0  d0ms_l0.5
+SlowRamp   threshold_ideal      5979.51           6917.32  8.84        20          0  d0ms_l0.5
+ Stealth   threshold_ideal      2874.15           9623.50  7.86        20          0  d0ms_l0.5
+Additive threshold_matched       195.54          39341.71 16.50        20          0 d20ms_l0.2
+     DoS threshold_matched      5017.00              0.00   NaN         0          0 d20ms_l0.2
+  Normal threshold_matched      6067.99              0.00   NaN         0          0 d20ms_l0.2
+    Ramp threshold_matched      5505.24          59138.07 16.12        20          0 d20ms_l0.2
+Sinusoid threshold_matched      5163.09          25000.23 14.67        20          0 d20ms_l0.2
+SlowRamp threshold_matched      5895.27           6882.91  8.78        20          0 d20ms_l0.2
+ Stealth threshold_matched      3913.82          10109.11  8.65        20          0 d20ms_l0.2
+Additive   threshold_ideal      1449.69          40595.86 17.52        20          0 d20ms_l0.2
+     DoS   threshold_ideal      5017.00              0.00   NaN         0          0 d20ms_l0.2
+  Normal   threshold_ideal      6067.99              0.00   NaN         0          0 d20ms_l0.2
+    Ramp   threshold_ideal      5486.17          59119.00 16.13        20          0 d20ms_l0.2
+Sinusoid   threshold_ideal      5200.52          25037.66 14.84        20          0 d20ms_l0.2
+SlowRamp   threshold_ideal      5895.27           6882.91  8.78        20          0 d20ms_l0.2
+ Stealth   threshold_ideal      2717.12           8912.42  7.48        20          0 d20ms_l0.2

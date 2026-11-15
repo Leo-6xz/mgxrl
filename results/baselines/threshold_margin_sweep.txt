@@ -1,0 +1,4 @@
+margin 1: {"Additive": [39116.0, 20], "DoS": [83.0, 8], "Normal": [7.0, 4], "Ramp": [59659.0, 20], "Sinusoid": [26782.0, 20], "SlowRamp": [6944.0, 20], "Stealth": [11128.0, 20]}
+margin 3: {"Additive": [44350.0, 20], "DoS": [0.0, 2], "Normal": [0.0, 1], "Ramp": [59514.0, 20], "Sinusoid": [26628.0, 20], "SlowRamp": [6826.0, 20], "Stealth": [4525.0, 15]}
+margin 10: {"Additive": [42189.0, 20], "DoS": [0.0, 2], "Normal": [0.0, 1], "Ramp": [58034.0, 20], "Sinusoid": [22217.0, 20], "SlowRamp": [5135.0, 19], "Stealth": [-0.0, 2]}
+margin 30: {"Additive": [22434.0, 12], "DoS": [0.0, 2], "Normal": [0.0, 1], "Ramp": [51401.0, 20], "Sinusoid": [6940.0, 12], "SlowRamp": [680.0, 5], "Stealth": [-0.0, 2]}

@@ -123,6 +123,94 @@ class MicrogridState:
         )
 
 
+def wmsr_mask(adj: np.ndarray, x_own: np.ndarray, x_rx: np.ndarray, F: int = 1) -> np.ndarray:
+    """Receiver-side W-MSR edge mask (LeBlanc et al., IEEE JSAC 2013).
+
+    Each node i compares the values it receives from its in-neighbours with its
+    own. Among the neighbours whose value is strictly larger than x_i it
+    discards the F largest (all of them if there are fewer than F), and the
+    same for strictly smaller values; the remaining edges are kept. Returns an
+    n x n 0/1 matrix to multiply into the adjacency. Resilience to F malicious
+    neighbours requires a (2F+1)-robust graph; a ring is only 1-robust.
+    """
+    n = adj.shape[0]
+    nb, valid = _neighbour_table(adj)
+    vals = x_rx[nb]
+    own = x_own[:, None]
+    hi = valid & (vals > own)
+    lo = valid & (vals < own)
+    # rank within the "larger" set by descending value, "smaller" by ascending
+    r_hi = np.argsort(np.argsort(np.where(hi, -vals, np.inf), axis=1, kind="stable"), axis=1)
+    r_lo = np.argsort(np.argsort(np.where(lo, vals, np.inf), axis=1, kind="stable"), axis=1)
+    keep = valid & ~(hi & (r_hi < F)) & ~(lo & (r_lo < F))
+    mask = np.zeros((n, n))
+    rows = np.repeat(np.arange(n), nb.shape[1]).reshape(nb.shape)
+    mask[rows[keep], nb[keep]] = 1.0
+    return mask
+
+
+class CommChannel:
+    """Imperfect consensus links (off unless attached as `Microgrid.channel`).
+
+    Applied to the values as transmitted (after any attack), once per plant
+    step dt:
+      * quantization: round to `q_xi` (rad/s) and `q_zeta` (pu); 0 disables;
+      * delay: every receiver sees each source's value `delay_steps` plant
+        steps (ms at dt = 1 ms) late;
+      * packet loss: each source's update is lost with probability `loss_p`
+        per step, independently, and receivers hold the last value received.
+    The loss draws use their own generator, seeded at reset, so attaching a
+    channel does not change the plant's measurement-noise sequence.
+    """
+
+    def __init__(self, delay_steps=0, loss_p=0.0, q_xi=0.0, q_zeta=0.0, seed=0):
+        self.delay_steps, self.loss_p = int(delay_steps), float(loss_p)
+        self.q_xi, self.q_zeta, self.seed = float(q_xi), float(q_zeta), int(seed)
+        self.reset(0)
+
+    def reset(self, n, seed=None):
+        from collections import deque
+        self.buf = deque()
+        self.held = None
+        self.rng = np.random.default_rng(self.seed if seed is None else seed)
+
+    def transmit(self, xi_tx, zeta_tx):
+        x, z = np.array(xi_tx, float), np.array(zeta_tx, float)
+        if self.q_xi > 0:
+            x = np.round(x / self.q_xi) * self.q_xi
+        if self.q_zeta > 0:
+            z = np.round(z / self.q_zeta) * self.q_zeta
+        self.buf.append((x, z))
+        if len(self.buf) > self.delay_steps + 1:
+            self.buf.popleft()
+        x, z = (v.copy() for v in self.buf[0])
+        if self.held is None:
+            self.held = (x.copy(), z.copy())
+        if self.loss_p > 0:
+            lost = self.rng.random(x.size) < self.loss_p
+            x[lost], z[lost] = self.held[0][lost], self.held[1][lost]
+        self.held = (x.copy(), z.copy())
+        return x, z
+
+
+_NB_CACHE: dict = {}
+
+
+def _neighbour_table(adj: np.ndarray):
+    key = adj.tobytes()
+    if key not in _NB_CACHE:
+        n = adj.shape[0]
+        lists = [np.flatnonzero(adj[i]) for i in range(n)]
+        d = max((len(l) for l in lists), default=0)
+        nb = np.zeros((n, max(d, 1)), dtype=int)
+        valid = np.zeros((n, max(d, 1)), dtype=bool)
+        for i, l in enumerate(lists):
+            nb[i, : len(l)] = l
+            valid[i, : len(l)] = True
+        _NB_CACHE[key] = (nb, valid)
+    return _NB_CACHE[key]
+
+
 def ring_adjacency(n: int) -> np.ndarray:
     """Undirected ring communication graph, as in Fig. 3 of the source paper."""
     a = np.zeros((n, n))
@@ -219,6 +307,11 @@ class Microgrid:
         self.collapsed = False
         if self.attack is not None:
             self.attack.reset()
+        if getattr(self, "channel", None) is not None:
+            # per-episode loss pattern, derived from the plant RNG state
+            # without drawing from it (the noise sequence is unchanged)
+            st = self.rng.bit_generator.state["state"]["state"]
+            self.channel.reset(self.n, seed=(int(st) ^ self.channel.seed) % (2**63))
 
         n_settle = int(round(settle_time / self.p.dt))
         for _ in range(n_settle):
@@ -290,6 +383,8 @@ class Microgrid:
         zeta_rx = state.zeta.copy()
         if attack_active and self.attack is not None:
             xi_rx, zeta_rx = self.attack.corrupt(state.t, xi_rx, zeta_rx)
+        if getattr(self, "channel", None) is not None:
+            xi_rx, zeta_rx = self.channel.transmit(xi_rx, zeta_rx)
 
         # --- Agent action: per-link TRUST WEIGHTS ----------------------------
         # Two earlier formulations failed, and the reason is worth recording.
@@ -337,6 +432,17 @@ class Microgrid:
             trust_xi = trust_zeta = np.ones(n)
         A_xi = self.adj * trust_xi[None, :]
         A_zeta = self.adj * trust_zeta[None, :]
+
+        # Optional receiver-side W-MSR filtering (baseline only; off by default,
+        # so the nominal controller and every trained agent are unchanged).
+        if getattr(self, "consensus_filter", "none") == "wmsr":
+            F = int(getattr(self, "wmsr_F", 1))
+            m_xi = wmsr_mask(self.adj, state.xi, xi_rx, F)
+            m_zeta = wmsr_mask(self.adj, state.zeta, zeta_rx, F)
+            A_xi = A_xi * m_xi
+            A_zeta = A_zeta * m_zeta
+            self.wmsr_kept_xi = float(m_xi[self.adj > 0].mean())
+            self.wmsr_kept_zeta = float(m_zeta[self.adj > 0].mean())
 
         # --- (retired) additive compensator ---------------------------------
         # The residual used to be added to dxi/dt. That was the wrong place.
@@ -432,7 +538,7 @@ class Microgrid:
             time, V1, V2, V3, I1, I2, I3,
             P_DG1, Q_DG1, f_DG1, ..., P_DG10, Q_DG10, f_DG10, label
 
-        (label excluded here.) Use this to feed the dataset-trained detector
+        (label excluded here.) We Used this to feed the dataset-trained detector
         with simulator output -- it is the interface that lets the detector
         transfer from the Dataport CSVs into the RL loop.
         """
@@ -451,7 +557,7 @@ class Microgrid:
         frequency, but it drives xi_spread up by ~60x because the frozen link
         stops the correction states from agreeing. Proportional power sharing is
         *enforced* by that agreement, so disagreement is the physically correct
-        thing to penalise -- and it is the only term that gives the agent a
+        thing to penalize -- and it is the only term that gives the agent a
         usable gradient on DoS and Coordinated Stealth.
         """
         p = self.p

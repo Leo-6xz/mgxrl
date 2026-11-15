@@ -154,7 +154,7 @@ class Sinusoid(AttackInjector):
 class CoordinatedStealth(AttackInjector):
     """eq. (15)-(16): low-amplitude correlated deviations across several DGs.
 
-    This is the class your controller should be judged on. It is engineered to
+    This is the class our controller is judged on. It is engineered to
     stay inside normal operating envelopes, so a detector that only sees
     threshold violations will miss it, and a controller that only reacts to
     violations will never act.
@@ -216,6 +216,39 @@ ATTACK_REGISTRY = {
     "Stealth": CoordinatedStealth,
     "DoS": DenialOfService,
 }
+
+
+@dataclass
+class ThresholdAware(AttackInjector):
+    """An attacker who knows the innovation threshold and stays under it.
+
+    The innovation of source j is the mean of its receivers' values minus the
+    value j transmits. This attacker transmits, on each target link,
+    mean(receivers) - alpha * tau * limit, holding the innovation at alpha
+    times the detection threshold (alpha < 1) for as long as the attack lasts:
+    the largest persistent bias a fixed threshold cannot see. Not part of the
+    training distribution; evaluation only.
+    """
+
+    adj: np.ndarray | None = None
+    tau_xi: float = 0.0           # thresholds in the units the rule uses
+    tau_zeta: float = 0.0         # (innovation / limit)
+    xi_limit: float = 1.0
+    zeta_limit: float = 1.0
+    alpha: float = 0.9
+    sign: float = 1.0
+    class_index: int = 1
+    name: str = "ThresholdAware"
+
+    def corrupt(self, t, xi, zeta):
+        if not self.active(t):
+            return xi, zeta
+        xi_rx, zeta_rx = xi.copy(), zeta.copy()
+        for j in self.targets:
+            rcv = np.flatnonzero(self.adj[:, j])
+            xi_rx[j] = xi[rcv].mean() - self.sign * self.alpha * self.tau_xi * self.xi_limit
+            zeta_rx[j] = zeta[rcv].mean() - self.sign * self.alpha * self.tau_zeta * self.zeta_limit
+        return xi_rx, zeta_rx
 
 
 def sample_attack(

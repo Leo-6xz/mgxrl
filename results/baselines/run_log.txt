@@ -1,0 +1,181 @@
+Nominal ...
+  Normal done
+  Additive done
+  Ramp done
+  SlowRamp done
+  Sinusoid done
+  Stealth done
+  DoS done
+  nominal reproduces results/eval3_s0/sweep_nominal.csv: max |return diff| = 7.52e-10
+W-MSR (F=1) ...
+  Normal done
+  Additive done
+  Ramp done
+  SlowRamp done
+  Sinusoid done
+  Stealth done
+  DoS done
+Calibrating threshold ...
+  max attack-free |innovation|: xi 0.0003289, zeta 0.01125; thresholds 0.0004934, 0.01687
+Threshold rule ...
+  Normal done
+  Additive done
+  Ramp done
+  SlowRamp done
+  Sinusoid done
+  Stealth done
+  DoS done
+Oracle isolation ...
+  Normal done
+  Additive done
+  Ramp done
+  SlowRamp done
+  Sinusoid done
+  Stealth done
+  DoS done
+
+Normal-operation cost ...
+
+Mean return by class and controller:
+controller  agent_eval3_s0  agent_eval3_s1  agent_eval3_s2  nominal  oracle  threshold     wmsr
+attack                                                                                         
+Additive          -12917.0        -12733.0        -25082.0 -39449.0  4872.0      984.0 -12336.0
+DoS                 3544.0          2605.0           653.0   5099.0  5378.0     5099.0 -12224.0
+Normal              4331.0          3339.0           738.0   6159.0  6159.0     6159.0 -12257.0
+Ramp               -9655.0        -26313.0        -30989.0 -54070.0  5377.0     5543.0 -12211.0
+Sinusoid          -21193.0        -24811.0        -26394.0 -21527.0  5287.0     5224.0 -12137.0
+SlowRamp           -2937.0         -2927.0         -2908.0   -937.0  5378.0     5983.0 -12368.0
+Stealth            -7745.0         -7617.0         -8959.0  -6783.0  3636.0     2897.0 -11864.0
+
+Collapsed episodes (of 20 ):
+controller  agent_eval3_s0  agent_eval3_s1  agent_eval3_s2  nominal  oracle  threshold  wmsr
+attack                                                                                      
+Additive                 0               0               0        0       0          0     0
+DoS                      0               0               0        0       0          0     0
+Normal                   0               0               0        0       0          0     0
+Ramp                     1               0               3        3       0          0     0
+Sinusoid                 0               0               0        0       0          0     0
+SlowRamp                 0               0               0        0       0          0     0
+Stealth                  0               0               0        0       0          0     0
+
+Paired return comparisons:
+  attack                  comparison  delta_return      t  n_better  n
+Additive             wmsr vs nominal      27113.42   9.36        20 20
+     DoS             wmsr vs nominal     -17322.59 -16.97         0 20
+  Normal             wmsr vs nominal     -18415.95 -19.25         0 20
+    Ramp             wmsr vs nominal      41858.69  11.48        20 20
+Sinusoid             wmsr vs nominal       9390.01   4.18        15 20
+SlowRamp             wmsr vs nominal     -11431.41  -9.03         1 20
+ Stealth             wmsr vs nominal      -5080.70  -3.09         5 20
+Additive        threshold vs nominal      40433.57  16.71        20 20
+     DoS        threshold vs nominal          0.00    NaN         0 20
+  Normal        threshold vs nominal          0.00    NaN         0 20
+    Ramp        threshold vs nominal      59612.80  16.37        20 20
+Sinusoid        threshold vs nominal      26751.22  15.02        20 20
+SlowRamp        threshold vs nominal       6919.65   8.85        20 20
+ Stealth        threshold vs nominal       9679.98   7.87        20 20
+Additive           oracle vs nominal      44320.93  16.51        20 20
+     DoS           oracle vs nominal        279.09   1.66        12 20
+  Normal           oracle vs nominal          0.00    NaN         0 20
+    Ramp           oracle vs nominal      59446.97  16.38        20 20
+Sinusoid           oracle vs nominal      26814.31  15.10        20 20
+SlowRamp           oracle vs nominal       6314.80   8.79        20 20
+ Stealth           oracle vs nominal      10418.79   9.15        20 20
+Additive   agent_eval3_s0 vs nominal      26532.63  12.24        20 20
+     DoS   agent_eval3_s0 vs nominal      -1555.30  -4.93         1 20
+  Normal   agent_eval3_s0 vs nominal      -1827.81  -4.74         0 20
+    Ramp   agent_eval3_s0 vs nominal      44414.99  12.19        20 20
+Sinusoid   agent_eval3_s0 vs nominal        334.86   0.33        10 20
+SlowRamp   agent_eval3_s0 vs nominal      -2000.00  -1.83         7 20
+ Stealth   agent_eval3_s0 vs nominal       -961.88  -2.53         3 20
+Additive   agent_eval3_s1 vs nominal      26716.36   8.73        19 20
+     DoS   agent_eval3_s1 vs nominal      -2493.65  -4.63         0 20
+  Normal   agent_eval3_s1 vs nominal      -2819.95  -5.13         0 20
+    Ramp   agent_eval3_s1 vs nominal      27756.76   7.09        20 20
+Sinusoid   agent_eval3_s1 vs nominal      -3283.34  -3.60         4 20
+SlowRamp   agent_eval3_s1 vs nominal      -1989.94  -2.19         4 20
+ Stealth   agent_eval3_s1 vs nominal       -834.41  -1.10         6 20
+Additive   agent_eval3_s2 vs nominal      14366.88   2.90        11 20
+     DoS   agent_eval3_s2 vs nominal      -4446.17  -6.08         0 20
+  Normal   agent_eval3_s2 vs nominal      -5421.08  -7.17         0 20
+    Ramp   agent_eval3_s2 vs nominal      23081.31   4.72        16 20
+Sinusoid   agent_eval3_s2 vs nominal      -4866.90  -5.86         0 20
+SlowRamp   agent_eval3_s2 vs nominal      -1970.90  -1.51         9 20
+ Stealth   agent_eval3_s2 vs nominal      -2175.96  -2.73         5 20
+Additive      agent_eval3_s0 vs wmsr       -580.79  -0.19        12 20
+     DoS      agent_eval3_s0 vs wmsr      15767.29  15.36        20 20
+  Normal      agent_eval3_s0 vs wmsr      16588.14  16.19        20 20
+    Ramp      agent_eval3_s0 vs wmsr       2556.30   0.85        12 20
+Sinusoid      agent_eval3_s0 vs wmsr      -9055.15  -3.59         4 20
+SlowRamp      agent_eval3_s0 vs wmsr       9431.41   5.31        17 20
+ Stealth      agent_eval3_s0 vs wmsr       4118.82   2.32        16 20
+Additive agent_eval3_s0 vs threshold     -13900.95  -4.97         1 20
+     DoS agent_eval3_s0 vs threshold      -1555.30  -4.93         1 20
+  Normal agent_eval3_s0 vs threshold      -1827.81  -4.74         0 20
+    Ramp agent_eval3_s0 vs threshold     -15197.81  -5.16         0 20
+Sinusoid agent_eval3_s0 vs threshold     -26416.36 -12.71         0 20
+SlowRamp agent_eval3_s0 vs threshold      -8919.66  -5.85         0 20
+ Stealth agent_eval3_s0 vs threshold     -10641.86  -7.71         0 20
+Additive    agent_eval3_s0 vs oracle     -17788.30  -6.31         0 20
+     DoS    agent_eval3_s0 vs oracle      -1834.39  -6.00         0 20
+  Normal    agent_eval3_s0 vs oracle      -1827.81  -4.74         0 20
+    Ramp    agent_eval3_s0 vs oracle     -15031.99  -5.13         0 20
+Sinusoid    agent_eval3_s0 vs oracle     -26479.45 -12.75         0 20
+SlowRamp    agent_eval3_s0 vs oracle      -8314.80  -5.84         0 20
+ Stealth    agent_eval3_s0 vs oracle     -11380.67  -8.65         0 20
+Additive      agent_eval3_s1 vs wmsr       -397.05  -0.12        10 20
+     DoS      agent_eval3_s1 vs wmsr      14828.94  15.22        20 20
+  Normal      agent_eval3_s1 vs wmsr      15595.99  15.82        20 20
+    Ramp      agent_eval3_s1 vs wmsr     -14101.93  -2.97         5 20
+Sinusoid      agent_eval3_s1 vs wmsr     -12673.35  -5.57         1 20
+SlowRamp      agent_eval3_s1 vs wmsr       9441.48   6.54        17 20
+ Stealth      agent_eval3_s1 vs wmsr       4246.29   2.63        15 20
+Additive agent_eval3_s1 vs threshold     -13717.21  -4.65         2 20
+     DoS agent_eval3_s1 vs threshold      -2493.65  -4.63         0 20
+  Normal agent_eval3_s1 vs threshold      -2819.95  -5.13         0 20
+    Ramp agent_eval3_s1 vs threshold     -31856.04  -7.09         0 20
+Sinusoid agent_eval3_s1 vs threshold     -30034.56 -14.77         0 20
+SlowRamp agent_eval3_s1 vs threshold      -8909.59  -7.49         0 20
+ Stealth agent_eval3_s1 vs threshold     -10514.40  -9.02         0 20
+Additive    agent_eval3_s1 vs oracle     -17604.56  -5.59         0 20
+     DoS    agent_eval3_s1 vs oracle      -2772.74  -5.12         0 20
+  Normal    agent_eval3_s1 vs oracle      -2819.95  -5.13         0 20
+    Ramp    agent_eval3_s1 vs oracle     -31690.22  -7.05         0 20
+Sinusoid    agent_eval3_s1 vs oracle     -30097.64 -14.85         0 20
+SlowRamp    agent_eval3_s1 vs oracle      -8304.74  -7.46         0 20
+ Stealth    agent_eval3_s1 vs oracle     -11253.20 -10.28         0 20
+Additive      agent_eval3_s2 vs wmsr     -12746.53  -2.29         8 20
+     DoS      agent_eval3_s2 vs wmsr      12876.42  12.99        20 20
+  Normal      agent_eval3_s2 vs wmsr      12994.87  13.08        20 20
+    Ramp      agent_eval3_s2 vs wmsr     -18777.37  -3.24         6 20
+Sinusoid      agent_eval3_s2 vs wmsr     -14256.91  -6.44         1 20
+SlowRamp      agent_eval3_s2 vs wmsr       9460.52   5.62        18 20
+ Stealth      agent_eval3_s2 vs wmsr       2904.74   1.78        12 20
+Additive agent_eval3_s2 vs threshold     -26066.69  -5.01         1 20
+     DoS agent_eval3_s2 vs threshold      -4446.17  -6.08         0 20
+  Normal agent_eval3_s2 vs threshold      -5421.08  -7.17         0 20
+    Ramp agent_eval3_s2 vs threshold     -36531.48  -6.44         0 20
+Sinusoid agent_eval3_s2 vs threshold     -31618.12 -16.67         0 20
+SlowRamp agent_eval3_s2 vs threshold      -8890.55  -6.34         0 20
+ Stealth agent_eval3_s2 vs threshold     -11855.94  -8.74         0 20
+Additive    agent_eval3_s2 vs oracle     -29954.04  -5.74         0 20
+     DoS    agent_eval3_s2 vs oracle      -4725.26  -6.73         0 20
+  Normal    agent_eval3_s2 vs oracle      -5421.08  -7.17         0 20
+    Ramp    agent_eval3_s2 vs oracle     -36365.66  -6.41         0 20
+Sinusoid    agent_eval3_s2 vs oracle     -31681.21 -16.72         0 20
+SlowRamp    agent_eval3_s2 vs oracle      -8285.69  -5.80         0 20
+ Stealth    agent_eval3_s2 vs oracle     -12594.75  -9.47         0 20
+
+Diagnostics: {
+  "threshold_tau_xi": 0.0004934064927510917,
+  "threshold_tau_zeta": 0.016874926630407572,
+  "calib_max_innov_xi": 0.00032893766183406115,
+  "calib_max_innov_zeta": 0.011249951086938381,
+  "margin": 1.5,
+  "nominal_repro_max_abs_return_diff": 7.521521183662117e-10,
+  "wmsr_edges_kept_xi": 0.11848124999999998,
+  "wmsr_edges_kept_zeta": 0.3379958333333333,
+  "wmsr_connectivity_loss": 0.7717614583333333,
+  "threshold_mean_connectivity_loss": 0.0,
+  "threshold_frac_steps_any_isolated": 0.0
+}

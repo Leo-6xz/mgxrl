@@ -1,0 +1,72 @@
+{
+  "d10ms_l0": {
+    "tau_matched": [
+      0.0004251137579558417,
+      0.016871443949639797
+    ],
+    "tau_ideal": [
+      0.0004934064927510917,
+      0.016874926630407572
+    ],
+    "normal_loss_matched": 0.0,
+    "normal_any_isolated_matched": 0.0,
+    "normal_loss_ideal": 0.0,
+    "normal_any_isolated_ideal": 0.0
+  },
+  "d50ms_l0": {
+    "tau_matched": [
+      0.00037055197753943503,
+      0.016854553017765284
+    ],
+    "tau_ideal": [
+      0.0004934064927510917,
+      0.016874926630407572
+    ],
+    "normal_loss_matched": 0.0,
+    "normal_any_isolated_matched": 0.0,
+    "normal_loss_ideal": 0.0,
+    "normal_any_isolated_ideal": 0.0
+  },
+  "d0ms_l0.2": {
+    "tau_matched": [
+      0.0004939664213452488,
+      0.016874886117875576
+    ],
+    "tau_ideal": [
+      0.0004934064927510917,
+      0.016874926630407572
+    ],
+    "normal_loss_matched": 0.0,
+    "normal_any_isolated_matched": 0.0,
+    "normal_loss_ideal": 0.0,
+    "normal_any_isolated_ideal": 0.0
+  },
+  "d0ms_l0.5": {
+    "tau_matched": [
+      0.0004886561800958589,
+      0.016874775756150484
+    ],
+    "tau_ideal": [
+      0.0004934064927510917,
+      0.016874926630407572
+    ],
+    "normal_loss_matched": 0.0,
+    "normal_any_isolated_matched": 0.0,
+    "normal_loss_ideal": 0.0,
+    "normal_any_isolated_ideal": 0.0
+  },
+  "d20ms_l0.2": {
+    "tau_matched": [
+      0.00036685189115814865,
+      0.016867659520357847
+    ],
+    "tau_ideal": [
+      0.0004934064927510917,
+      0.016874926630407572
+    ],
+    "normal_loss_matched": 0.0,
+    "normal_any_isolated_matched": 0.0,
+    "normal_loss_ideal": 0.0,
+    "normal_any_isolated_ideal": 0.0
+  }
+}
