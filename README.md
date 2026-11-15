@@ -13,10 +13,9 @@ alternative, acting at the receiver) W-MSR trimming.
 
 **Paper:** E. E. Ogar and S. Chaitusaney, *Source-Level Trust Weighting for
 Resilient Consensus Secondary Control of Islanded Microgrids on Sparse
-Communication Graphs* (in preparation for *Sustainable Energy, Grids and
-Networks*). An earlier, RL-centred version was submitted to *Results in
-Engineering* and declined; the present version reframes the work around the
-mechanism and reports the learned policy as a negative result.
+Communication Graphs* (in preparation for *Submission*). An earlier, RL-centred 
+version was modified; the present version reframes the work around the mechanism 
+and reports the learned policy as a negative result.
 
 **Archived release of this repository:** doi:[10.5281/zenodo.24134204](https://doi.org/10.5281/zenodo.24134204)
 (cite the concept DOI; it always resolves to the latest version).
@@ -156,7 +155,7 @@ mgxrl/
 │                    validate_fidelity  check_inner_loops
 │                    build_reference_model  deploy_policy  validate_threshold_rule
 │                    getAttackConfig  fit_noise_from_dataset
-├── figs/source/     figure scripts; f_segan.py makes the SEGAN data figures
+├── figs/source/     figure scripts; f_segan.py makes the latest manuscript data figures
 ├── runs/            final policy + VecNormalize statistics of each reported run
 ├── results/         the tables behind every reported number
 └── tests/test_plant.py               23 tests
@@ -194,8 +193,7 @@ deliberately excluded.
 
 Stages 1–7 produce the plant, the release forensics and the learned agents.
 Table and figure numbers quoted in stages 1–7 refer to the earlier
-(*Results in Engineering*) version of the paper; stage 8 produces every result
-that is new in the SEGAN manuscript.
+version of the paper; stage 8 produces every result that is new in the manuscript.
 
 ### 1 — Release forensics
 
@@ -314,7 +312,7 @@ Exports the deterministic mean with a **clamp, not tanh** — SB3 uses
 `squash_output=False`, and `tanh(-1) = -0.76`, so exporting tanh would deliver
 24 % trust where full isolation was commanded.
 
-### 8 — Comparators, robustness and transfer (SEGAN manuscript)
+### 8 — Comparators, robustness and transfer (Latest manuscript version)
 
 ```powershell
 python scripts\23_baselines.py
@@ -430,8 +428,8 @@ reported all six as fine.
   forms the innovation from all receivers of a source).
 - A stability certificate for the switched closed loop under arbitrary
   isolation sequences.
-- The consensus-bias scaling law is now derived (Proposition 1 of the SEGAN
-  manuscript), not only measured.
+- The consensus-bias scaling law is now derived (Proposition 1 of the latest
+  manuscript version), not only measured.
 
 ---
 
