@@ -79,6 +79,7 @@ class MicrogridParams:
 
     # --- Communication graph (ring; matches Fig. 3 of the source paper) ---
     comm_topology: str = "ring"
+    elec_topology: str = "ring"         # "ring" or "radial" (open feeder)
 
     # --- Measurement realism (statistics fitted from the Dataport CSVs;
     #      see scripts/01_fit_noise.py) ---
@@ -227,7 +228,10 @@ def build_ybus(params: MicrogridParams, load_scale: np.ndarray | None = None) ->
     y_line = 1.0 / z
     y = np.zeros((n, n), dtype=complex)
 
-    for i in range(n):
+    # "ring" closes the feeder; "radial" leaves the last segment open, so the
+    # buses form a single radial feeder (a chain).
+    segments = n if getattr(params, "elec_topology", "ring") == "ring" else n - 1
+    for i in range(segments):
         j = (i + 1) % n
         y[i, i] += y_line
         y[j, j] += y_line

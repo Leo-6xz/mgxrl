@@ -9,6 +9,7 @@ Parts (run one or several):
             2- and 3-robust; nominal, W-MSR and threshold
   ringsize  rings of 6 and 14 units: nominal, threshold, oracle
   latency   time from onset to isolation, and false isolations, for the rule
+  radial    transfer to a radial feeder with a chain consensus graph
 
     python scripts\\24_robustness.py --part comms
     python scripts\\24_robustness.py --part adaptive latency graphs ringsize
@@ -174,7 +175,36 @@ def part_latency(out, seeds):
               flush=True)
 
 
-PARTS = {"comms": part_comms, "adaptive": part_adaptive, "graphs": part_graphs,
+def part_radial(out, seeds):
+    """Transfer test: a radial feeder (open electrical ring) with a chain
+    consensus graph, the sparsest connected configuration (1-robust; the two
+    end units have a single neighbour)."""
+    from mgxrl.plant.microgrid import ring_adjacency
+    env = ResilientMicrogridEnv(plant_params=MicrogridParams(elec_topology="radial"))
+    A = ring_adjacency(env.n)
+    A[0, env.n - 1] = A[env.n - 1, 0] = 0.0
+    set_comm_graph(env, A)
+    nom = sweep(env, None, n_seeds=seeds)
+    with use_wmsr(env, 1):
+        wm = sweep(env, None, n_seeds=seeds)
+    thr, _, tau, ft = threshold_arm(env, seeds)
+    ora = sweep(env, OraclePolicy(env), n_seeds=seeds)
+    rows = []
+    for lab, v in (("nominal", nom), ("wmsr", wm), ("threshold", thr), ("oracle", ora)):
+        v.to_csv(os.path.join(out, f"sweep_radial_{lab}.csv"), index=False)
+        if lab != "nominal":
+            p = paired(nom, v, lab); p["system"] = "radial"; rows.append(p.reset_index())
+    diag = {"r_robust": r_robustness(A), "tau": tau,
+            "threshold_normal_loss": ft["mean_connectivity_loss"],
+            **wmsr_edges_kept(env, n_seeds=seeds)}
+    res = pd.concat(rows, ignore_index=True)
+    res.to_csv(os.path.join(out, "radial_paired.csv"), index=False)
+    json.dump(diag, open(os.path.join(out, "radial_diag.json"), "w"), indent=2)
+    print("radial", json.dumps(diag), flush=True)
+    print(res.round(2).to_string(index=False), flush=True)
+
+
+PARTS = {"radial": part_radial, "comms": part_comms, "adaptive": part_adaptive, "graphs": part_graphs,
          "ringsize": part_ringsize, "latency": part_latency}
 
 

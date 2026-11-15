@@ -1,0 +1,11 @@
+{
+  "r_robust": 1,
+  "tau": [
+    0.0007960837392602116,
+    0.01766319153830409
+  ],
+  "threshold_normal_loss": 0.0,
+  "wmsr_edges_kept_xi": 0.09129166666666669,
+  "wmsr_edges_kept_zeta": 0.3003564814814815,
+  "wmsr_connectivity_loss": 0.8041759259259259
+}

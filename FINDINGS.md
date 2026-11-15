@@ -1,4 +1,9 @@
-# FINDINGS — the IEEE DataPort microgrid release
+# FINDINGS
+
+Part I records what the public IEEE DataPort release can and cannot support.
+Part II records the controller findings reported in the SEGAN manuscript.
+
+# Part I — the IEEE DataPort microgrid release
 
 Evidence gathered while building this project against *Labeled Cyber–Physical
 Microgrid Dataset for Secondary-Control Cyberattack Detection*
@@ -283,6 +288,95 @@ comparison rather than averaged in.
 - A precise point estimate for clean block-split performance on the release.
 - Any statement about the release's secondary controller beyond "frequency has
   not restored within the one-second record".
+
+---
+
+---
+
+# Part II — controller findings (SEGAN manuscript)
+
+Every number is reproducible from `scripts/23`–`27` and `matlab/validate_threshold_rule.m`
+(README, pipeline stage 8). Evaluation: ten-DG ring, 20 paired seeds per class,
+injector RNG `default_rng(1000 + seed)`.
+
+| # | Finding | Evidence |
+|---|---|---|
+| 7 | The consensus-bias displacement contains no secondary gain, and is now derived | Proposition 1; `18`–`21` |
+| 8 | The steady-state innovation of a biased source is −b(n−1)/n on any connected graph | Proposition 2 |
+| 9 | A calibrated innovation threshold recovers 91–110 % of the oracle with zero attack-free cost | `23_baselines.py` |
+| 10 | W-MSR (F = 1) is worse than no defence on a 1-robust ring | `23_baselines.py`, `24 --part graphs` |
+| 11 | The learned policy's standing distrust is a property of the policy, not the mechanism | `23_baselines.py` against `results/eval3_s0..2` |
+| 12 | The rule's gains survive delay, loss, a threshold-aware adversary, graph density, ring size and a radial feeder | `24_robustness.py` |
+| 13 | An independent MATLAB reference with inner voltage loops reproduces the isolations | `25`, `validate_threshold_rule.m`, `26` |
+
+## 7. No gain term in the displacement
+
+At an unsaturated equilibrium with source a injecting bias b, every DG runs at
+`omega_nom + c_f d_a b / (k_p n)` and `L xi = b (A e_a − (d_a/n) 1)`. The
+active-power spread is `kappa(G, a) b / m`, with `kappa = floor((n−2)/2) ceil((n−2)/2) / n`
+on a ring (checked by solving the linear system for n = 6 … 14). Gains appear
+only in the frequency offset, and only as `c_f / k_p`; for the nominal Additive
+magnitude it predicts 19 mHz against 18.0 mHz measured.
+
+## 8. Innovation of a biased source
+
+Row a of the equilibrium equation gives `iota_a = −b (n−1) / (n xi_lim)`,
+independent of gains and topology. With the calibrated threshold the largest
+undetected steady bias on the ring is 0.0172 rad/s, bounding the spread at
+0.0175 pu (about 2.7 % of per-unit load) and the frequency offset at 1.1 mHz.
+
+## 9. Threshold rule against the oracle
+
+Margin 1.5, `tau_xi = 4.934e-4`, `tau_zeta = 1.6875e-2` (normalised).
+Every displacing class improved on 20 of 20 seeds, paired t 7.87–16.71. Share
+of the oracle's gain: Additive 91 %, Stealth 93 %, Ramp 100 %, Sinusoid 100 %,
+SlowRamp 110 % (the rule isolates only the attacked channel). Zero attack-free
+isolations. Margin sweep: μ = 1 gives occasional attack-free triggers (4/20
+seeds, 7 return units); μ = 3 raises Additive to 44,350 but halves the Stealth
+gain; μ ≥ 10 misses Stealth.
+
+## 10. W-MSR on sparse graphs
+
+Attack-free edges kept: 11.8 % (ξ) and 33.8 % (ζ) on the ring, 9.1 % (ξ) on
+the radial chain. With most edges trimmed each unit integrates its own
+frequency error — decentralised integral control — so frequency is the best of
+any controller (0.47 mHz) and sharing error is ten times nominal (0.0307 vs
+0.0030). Return ≈ −12,000 in every class. Denser graphs: attack-free cost
+−401 (2-robust) and −42 (3-robust), but Coordinated Stealth stays negative
+(−2,310, −2,617) because two to four sources exceed F = 1.
+
+## 11. The learned policy
+
+Agent minus threshold, paired: 415 of 420 comparisons lost; t from −4.6 to
+−16.7. Attack-free loss 1,828–5,421; standing distrust 2.7–4.7 sources
+(connectivity loss 0.159–0.258), invariant to attack prevalence (×3.5) and to
+its price (×10). The threshold rule trusts fully until the innovation crosses
+and still isolates in tens of milliseconds, so the insurance the agent bought
+is unnecessary for every class whose innovation is visible.
+
+## 12. Robustness and transfer
+
+- Communications (delay 10/50 ms, loss 20/50 %, 20 ms + 20 %): zero attack-free
+  false triggers with matched and ideal calibration; Ramp gain 58,452–59,607.
+- Threshold-aware adversary (holds innovation at α·τ): α = 0.5 untouched;
+  α = 0.9 sharing error 0.0072 in both arms; α = 1.2 isolated in 20/20,
+  sharing 0.0091 → 0.0033.
+- Latency (median): Additive 33.7 ms, Ramp 65.4, Sinusoid 40.9, Stealth 44.1
+  (max 357). False isolation of healthy neighbours under Additive: 18/20
+  episodes, 7,559 steps in total.
+- Rings of 6 and 14: zero attack-free cost, paired t 6.8–18.6.
+- Radial feeder + chain graph (recalibrated only): 99–118 % of the oracle gain
+  on Additive, Ramp, Sinusoid, SlowRamp; 67 % on Stealth. Absolute returns are
+  negative because reward references are those of the ring.
+
+## 13. MATLAB reference
+
+60 scenarios, noise and load steps off. Nominal f-RMS within 0.5 %; both
+models collapse on the same 2/10 Ramp scenarios; same 40 isolations; latency
+identical in 36, one period (10 ms) earlier in MATLAB in 4; per-class
+reduction agrees within 0.2 percentage points; threshold-arm f-RMS within
+about 10 % (one outlier at ratio 0.55, below 1 mHz). DoS is uninformative
+without load steps.
 
 ---
 
