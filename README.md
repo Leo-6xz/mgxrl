@@ -13,7 +13,7 @@ alternative, acting at the receiver) W-MSR trimming.
 
 **Paper:** E. E. Ogar and S. Chaitusaney, *Source-Level Trust Weighting for
 Resilient Consensus Secondary Control of Islanded Microgrids on Sparse
-Communication Graphs* (in preparation for *Submission*). An earlier, RL-centred 
+Communication Graphs* (*Submitted for publication consideration, Nov. 2026*). An earlier, RL-centred 
 version was modified; the present version reframes the work around the mechanism 
 and reports the learned policy as a negative result.
 
