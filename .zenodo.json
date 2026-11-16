@@ -1,15 +1,43 @@
 {
-  "title": "mgxrl: Trust-weighted resilient consensus control for microgrids (code, trained policies and results)",
+  "title": "mgxrl: Source-level trust weighting for resilient consensus secondary control of microgrids (code, reference model, trained policies and results)",
   "upload_type": "software",
-  "description": "Code, trained policies and result tables for the manuscript 'Trust-Weighted Resilient Consensus Control for Microgrids: A Physics-Structured Reinforcement Learning Framework with Verified Explanation Interfaces'. Contents: the reduced-order ten-DG islanded microgrid plant and six consensus-signal attack injectors; the Gymnasium environment with per-source trust-weight actions, safety projection and scale-normalised reward; PPO training and paired-seed evaluation; the three pre-training admissibility tests; integrated-gradients attribution, faithfulness battery and the template-versus-LLM explanation ablation; two-tier fidelity validation (stiff-solver reference, and differential comparison against the IEEE DataPort release); the mechanism sweeps behind the consensus-bias scaling law; forensic scripts for the public release; the final policies and VecNormalize statistics of every reported run; and scripts that regenerate every figure. The script reproduce_all.ps1 runs the full chain in dependency order. The IEEE DataPort release is not redistributed; the synthetic detector corpus is archived separately (doi:10.5281/zenodo.24082859). Code under Apache-2.0; result tables and figures under CC BY 4.0.",
+  "description": "Code, MATLAB reference model, trained policies and result tables for the manuscript 'Source-Level Trust Weighting for Resilient Consensus Secondary Control of Islanded Microgrids on Sparse Communication Graphs' (submitted for Publication). Version 1.1.0 adds: the calibrated innovation-threshold rule, receiver-side W-MSR and oracle-isolation comparators evaluated on the same paired seeds as the learned PPO policies (scripts/23); robustness and transfer tests covering communication delay, packet loss and quantization, a threshold-aware adversary, isolation latency, denser circulant graphs, rings of 6 and 14 units, and a radial feeder with a chain communication graph (scripts/24); an independent MATLAB reference with inner voltage loops that replays 60 exported scenarios (scripts/25-26, matlab/validate_threshold_rule.m); a paired trajectory example (scripts/27); and figure scripts for the revised manuscript. Retained from 1.0.0: the reduced-order ten-DG islanded microgrid plant and six consensus-signal attack injectors; the Gymnasium environment with per-source trust-weight actions and safety projection; PPO training and paired-seed evaluation; the pre-training admissibility tests; the mechanism sweeps behind the consensus-bias scaling law; forensic scripts for the public IEEE DataPort release; explanation and detector-benchmark code from the earlier version; and the final policies with VecNormalize statistics. reproduce_all.ps1 runs the full chain in dependency order. The IEEE DataPort release is not redistributed; the synthetic corpus is archived separately (doi:10.5281/zenodo.24082859). Code under Apache-2.0; result tables and figures under CC BY 4.0.",
   "license": "Apache-2.0",
-  "keywords": ["microgrid", "distributed secondary control", "resilient consensus", "cyberattack", "reinforcement learning", "trust weights", "explainable AI", "cyber-physical security"],
+  "keywords": [
+    "microgrid",
+    "distributed secondary control",
+    "resilient consensus",
+    "false data injection",
+    "trust weighting",
+    "W-MSR",
+    "cyber-physical security",
+    "reinforcement learning"
+  ],
   "creators": [
-    {"name": "Ogar, Emmanuel Ede", "affiliation": "Chulalongkorn University", "orcid": "0000-0002-1550-3546"},
-    {"name": "Chaitusaney, Surachai", "affiliation": "Chulalongkorn University", "orcid": "0000-0002-4194-3342"}
+    {
+      "name": "Ogar, Emmanuel Ede",
+      "affiliation": "Chulalongkorn University",
+      "orcid": "0000-0002-1550-3546"
+    },
+    {
+      "name": "Chaitusaney, Surachai",
+      "affiliation": "Chulalongkorn University",
+      "orcid": "0000-0002-4194-3342"
+    }
   ],
   "related_identifiers": [
-    {"identifier": "10.5281/zenodo.24082859", "relation": "references", "scheme": "doi", "resource_type": "dataset"},
-    {"identifier": "10.21227/bmtr-fr76", "relation": "references", "scheme": "doi", "resource_type": "dataset"}
-  ]
+    {
+      "identifier": "10.5281/zenodo.24082859",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "10.21227/bmtr-fr76",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "dataset"
+    }
+  ],
+  "version": "1.1.0"
 }

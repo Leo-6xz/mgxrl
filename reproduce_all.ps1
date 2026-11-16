@@ -282,6 +282,33 @@ Step 7 "ONNX export with VecNormalize statistics" {
 }
 
 # --------------------------------------------------------------------------
+# 8  Comparators, robustness, transfer and MATLAB validation (SEGAN manuscript)
+
+Step 8 "threshold rule, W-MSR and oracle on the paired seeds" { python scripts\23_baselines.py }
+Step 8 "robustness and transfer (about 1 h; radial alone about 15 min)" {
+    python scripts\24_robustness.py --part comms adaptive graphs ringsize latency radial
+}
+Step 8 "export MATLAB validation scenarios and Python reference" { python scripts\25_matlab_validation_scenarios.py }
+Step 8 "replay the scenarios in the MATLAB reference (skipped if MATLAB is absent)" {
+    if (Get-Command matlab -ErrorAction SilentlyContinue) {
+        matlab -batch "cd matlab; R = validate_threshold_rule"
+        python scripts\26_compare_matlab_validation.py
+    } else {
+        Write-Host "    matlab not on PATH; using the archived matlab_metrics.csv"
+        python scripts\26_compare_matlab_validation.py
+    }
+}
+Step 8 "paired trajectory example" { python scripts\27_trajectory_example.py --attack Ramp --seed 1 }
+Step 8 "SEGAN figures" {
+    Push-Location figs\source
+    try {
+        python f01.py
+        python f02.py
+        python f_segan.py
+    } finally { Pop-Location }
+}
+
+# --------------------------------------------------------------------------
 
 $mins = ((Get-Date) - $started).TotalMinutes
 Write-Host ("`nComplete in {0:n1} min. Transcript: {1}" -f $mins, $log) -ForegroundColor Green
